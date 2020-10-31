@@ -1,3 +1,10 @@
-# python_qa_windwos
+# Windows, Iframes, alerts
 
-Репозиторий занятия по работе с окнами.
+## Installation
+
+```bash
+python3 -m venv env
+source env/bin/activate
+pip install -U pip
+pip install -Ur requirements.txt
+```
