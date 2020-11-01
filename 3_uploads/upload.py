@@ -7,11 +7,9 @@ from selenium import webdriver
 @pytest.fixture
 def driver(request):
     driver = webdriver.Chrome()
-    driver.implicitly_wait(20)
-
+    driver.implicitly_wait(10)
     def fin():
         driver.quit()
-
     request.addfinalizer(fin)
     return driver
 

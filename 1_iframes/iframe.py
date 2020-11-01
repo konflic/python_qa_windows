@@ -1,21 +1,40 @@
+import time
 from selenium import webdriver
 
-chrome = webdriver.Chrome()
-chrome.get("http://0.0.0.0:8000/")
 
+chrome = webdriver.Chrome()
+chrome.maximize_window()
+chrome.get("https://konflic.github.io/front_example/pages/iframes.html")
+
+# Получаем iframe элементы на странице
 frames = chrome.find_elements_by_css_selector("iframe")
 
+# Переключаемся в первый iframe в списке
 chrome.switch_to.frame(frames[0])
-chrome.find_element_by_css_selector("button.header2__auth").click()
+chrome.find_element_by_name("search").send_keys("MacBook")
+chrome.find_element_by_xpath("//*[@id='search']//button[@type='button']").click()
+# Возвращаемся в исходный контекст
 chrome.switch_to.default_content()
-chrome.find_element_by_link_text("here3").click()
+chrome.find_element_by_id("main").click()
+chrome.switch_to.alert.accept()
+time.sleep(2)
 
-chrome.switch_to.frame("avito")
-chrome.find_element_by_link_text("Личные вещи").click()
+# Переключаемся в iframe по имени
+chrome.switch_to.frame("selenium")
+chrome.find_element_by_id("dropdownButton").click()
+# Возвращаемся в исходный контекст
 chrome.switch_to.default_content()
-chrome.find_element_by_link_text("here2").click()
+chrome.find_element_by_id("main").click()
+chrome.switch_to.alert.accept()
+time.sleep(2)
 
-chrome.switch_to.frame(frames[1])
-chrome.find_element_by_css_selector("#cn-accept-cookie").click()
+# Переключаемся по порядковому номеру
+chrome.switch_to.frame(2)
+chrome.find_element_by_css_selector("#submit").click()
+# Возвращаемся в исходный контекст
 chrome.switch_to.default_content()
-chrome.find_element_by_link_text("here1").click()
+chrome.find_element_by_id("main").click()
+chrome.switch_to.alert.accept()
+time.sleep(2)
+
+chrome.close()
