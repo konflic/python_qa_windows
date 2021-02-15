@@ -8,14 +8,15 @@ import selenium.webdriver.support.expected_conditions as EC
 
 @pytest.fixture
 def browser():
-    # wd = webdriver.Chrome()
+    wd = webdriver.Chrome()
     wd = webdriver.Firefox()
+    wd.get("https://konflic.github.io/front_example/pages/alerts.html")
     yield wd
     wd.quit()
 
 
 def test_basic_alert(browser):
-    browser.get("https://konflic.github.io/front_example/pages/alerts.html")
+    browser.get()
     browser.find_element_by_id("basic").click()
     time.sleep(2)
     WebDriverWait(browser, 10).until(EC.alert_is_present())
@@ -23,6 +24,8 @@ def test_basic_alert(browser):
     print(alert.text)
     alert.accept()
 
+
+def test_prompt_alert(browser):
     browser.find_element_by_id("prompt").click()
     time.sleep(2)
     prompt = browser.switch_to.alert
@@ -31,6 +34,8 @@ def test_basic_alert(browser):
     time.sleep(2)
     prompt.accept()
 
+
+def test_confirm_alert(browser):
     browser.find_element_by_id("confirm").click()
     time.sleep(2)
     confirm = browser.switch_to.alert
