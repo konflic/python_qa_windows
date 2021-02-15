@@ -8,7 +8,7 @@ import selenium.webdriver.support.expected_conditions as EC
 
 @pytest.fixture
 def browser():
-    wd = webdriver.Chrome()
+    # wd = webdriver.Chrome()
     wd = webdriver.Firefox()
     wd.get("https://konflic.github.io/front_example/pages/alerts.html")
     yield wd
@@ -16,7 +16,6 @@ def browser():
 
 
 def test_basic_alert(browser):
-    browser.get()
     browser.find_element_by_id("basic").click()
     time.sleep(2)
     WebDriverWait(browser, 10).until(EC.alert_is_present())
