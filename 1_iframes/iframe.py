@@ -1,8 +1,10 @@
 import time
+
+from config import CHROMEDRIVER
 from selenium import webdriver
 
 
-chrome = webdriver.Chrome()
+chrome = webdriver.Chrome(CHROMEDRIVER)
 chrome.maximize_window()
 chrome.get("https://konflic.github.io/front_example/pages/iframes.html")
 
@@ -30,6 +32,7 @@ time.sleep(2)
 
 # Переключаемся по порядковому номеру
 chrome.switch_to.frame(2)
+chrome.find_element_by_id("state").send_keys("fg;lsadkjg;lsakjdg;lksaj")
 chrome.find_element_by_css_selector("#submit").click()
 # Возвращаемся в исходный контекст
 chrome.switch_to.default_content()

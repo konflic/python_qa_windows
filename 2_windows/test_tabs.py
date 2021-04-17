@@ -3,12 +3,13 @@ import time
 
 from helpers import there_is_window_other_than
 from selenium import webdriver
+from config import CHROMEDRIVER
 from selenium.webdriver.support.ui import WebDriverWait
 
 
 @pytest.fixture
 def browser():
-    wd = webdriver.Chrome()
+    wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
     wd.get("https://konflic.github.io/front_example/")
     return wd
 
@@ -36,6 +37,7 @@ def test_windows_with_link(browser):
 
     browser.find_element_by_link_text("New window").click()
     new_window = WebDriverWait(browser, 2).until(there_is_window_other_than(old_windows))
+    assert new_window, "Новое окно не открылось после клика по ссылке"
     browser.switch_to.window(new_window)
     browser.get("https://yandex.ru")
 
