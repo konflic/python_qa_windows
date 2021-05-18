@@ -1,6 +1,6 @@
 import os
 
-__DRIVER_FOLDER = os.path.expanduser("~/Downloads/drivers")
-CHROMEDRIVER = f"{__DRIVER_FOLDER}/chromedriver"
-GECKODRIVER = f"{__DRIVER_FOLDER}/geckodriver"
-OPERADRIVER = f"{__DRIVER_FOLDER}/operadriver"
+DRIVERS_FOLDER = os.path.expanduser("~/Downloads/drivers")
+CHROMEDRIVER = f"{DRIVERS_FOLDER}/chromedriver"
+GECKODRIVER = f"{DRIVERS_FOLDER}/geckodriver"
+OPERADRIVER = f"{DRIVERS_FOLDER}/operadriver"

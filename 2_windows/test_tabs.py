@@ -11,7 +11,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 def browser():
     wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
     wd.get("https://konflic.github.io/front_example/")
-    return wd
+    yield wd
+    wd.quit()
 
 
 def test_windows_manual(browser):
@@ -26,6 +27,7 @@ def test_windows_manual(browser):
     time.sleep(2)
     browser.close()
     browser.switch_to.window(main_window)
+    browser.find_element_by_id("myBtn").click()
 
     time.sleep(2)
     browser.close()

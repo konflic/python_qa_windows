@@ -9,7 +9,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def browser():
-    wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
+    options = webdriver.ChromeOptions()
+    options.add_extension("ublock.crx")
+    wd = webdriver.Chrome(executable_path=CHROMEDRIVER, options=options)
     wd.get("https://konflic.github.io/front_example/")
     return wd
 
@@ -32,6 +34,9 @@ def test_disabled_button(browser):
     js_code = "$('#disabled')[0].disabled = false;"
     browser.execute_script(js_code)
 
+    # Поиск элементов на странице
+    web_el = browser.execute_script("return $('#disabled')[0]")
+
     time.sleep(1)  # Для демонстрации
 
     dis_btn.click()
@@ -40,3 +45,8 @@ def test_disabled_button(browser):
 
     # Проверяем что видна модалка
     WebDriverWait(browser, 3).until(EC.visibility_of(browser.find_element_by_id("myModal")))
+
+    with open("upload.js") as f:
+        browser.execute_script(f.read())
+
+    time.sleep(5)

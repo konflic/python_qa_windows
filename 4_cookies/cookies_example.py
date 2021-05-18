@@ -14,4 +14,9 @@ for cookie in cookies:
 
 chrome.delete_all_cookies()
 
+time.sleep(5)
+
+# Yandex restore some cookies
+cookies_after_delete = chrome.get_cookies()
+
 chrome.quit()
