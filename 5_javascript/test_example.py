@@ -22,9 +22,7 @@ def test_disabled_button(browser):
 
     # Сначала проверяем клик по задизейбленой кнопке
     dis_btn = browser.find_element_by_id("disabled")
-
     dis_btn.click()
-
     time.sleep(1)  # Для демонстрации
 
     # Проверяем что не видна модалка
@@ -38,9 +36,7 @@ def test_disabled_button(browser):
     web_el = browser.execute_script("return $('#disabled')[0]")
 
     time.sleep(1)  # Для демонстрации
-
     dis_btn.click()
-
     time.sleep(1)  # Для демонстрации
 
     # Проверяем что видна модалка
