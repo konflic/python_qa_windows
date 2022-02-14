@@ -2,6 +2,8 @@ import time
 import pytest
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
 from config import CHROMEDRIVER
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,17 +13,18 @@ from selenium.webdriver.support import expected_conditions as EC
 def browser():
     options = webdriver.ChromeOptions()
     options.add_extension("ublock.crx")
-    wd = webdriver.Chrome(executable_path=CHROMEDRIVER, options=options)
-    wd.get("https://konflic.github.io/front_example/")
-    return wd
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER, options=options)
+    driver.get("https://konflic.github.io/examples/")
+    yield driver
+    driver.close()
 
 
 def test_disabled_button(browser):
-    browser.get("https://konflic.github.io/front_example")
+    browser.get("https://konflic.github.io/examples")
     browser.maximize_window()
 
     # Сначала проверяем клик по задизейбленой кнопке
-    dis_btn = browser.find_element_by_id("disabled")
+    dis_btn = browser.find_element(By.CSS_SELECTOR, "#disabled")
     dis_btn.click()
     time.sleep(1)  # Для демонстрации
 

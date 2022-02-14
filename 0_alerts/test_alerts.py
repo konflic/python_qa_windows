@@ -13,7 +13,7 @@ import selenium.webdriver.support.expected_conditions as EC
 def browser():
     wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
     # wd = webdriver.Firefox(executable_path=GECKODRIVER)
-    wd.get("https://konflic.github.io/front_example/pages/alerts.html")
+    wd.get("https://konflic.github.io/examples/pages/alerts.html")
     yield wd
     wd.quit()
 

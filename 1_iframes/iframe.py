@@ -8,7 +8,7 @@ from selenium import webdriver
 
 chrome = webdriver.Firefox(executable_path=GECKODRIVER)
 chrome.maximize_window()
-chrome.get("https://konflic.github.io/front_example/pages/iframes.html")
+chrome.get("https://konflic.github.io/examples/pages/iframes.html")
 
 # Получаем iframe элементы на странице
 frames = chrome.find_elements(By.CSS_SELECTOR, "iframe")

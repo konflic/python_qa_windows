@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 @pytest.fixture
 def browser():
     wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
-    wd.get("https://konflic.github.io/front_example/")
+    wd.get("https://konflic.github.io/examples/")
     yield wd
     wd.quit()
 

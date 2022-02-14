@@ -19,7 +19,7 @@ def driver(request):
 
 def test_upload_radical(driver):
     driver.get('https://radikal.ru')
-    uploader = driver.find_element(By.CSS_SELECTOR, ".upload1")
+    uploader = driver.find_element(By.CSS_SELECTOR, "input.upload1")
     filename = os.path.join(os.path.dirname(__file__), 'selenium.png')
     uploader.send_keys(filename)
     time.sleep(10)
