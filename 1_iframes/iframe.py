@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from config import CHROMEDRIVER, GECKODRIVER
 from selenium import webdriver
 
-
+# TODO: На Chrome есть проблемы с загрузкой примера
 chrome = webdriver.Firefox(executable_path=GECKODRIVER)
 chrome.maximize_window()
 chrome.get("https://konflic.github.io/examples/pages/iframes.html")
@@ -33,7 +33,7 @@ chrome.switch_to.alert.accept()
 time.sleep(2)
 
 # Переключаемся по порядковому индексу
-chrome.switch_to.frame(10)
+chrome.switch_to.frame(2)
 chrome.find_element(By.ID, "state").send_keys("SomeTextForInput")
 chrome.find_element(By.CSS_SELECTOR, "#submit").click()
 # Возвращаемся в исходный контекст

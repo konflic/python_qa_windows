@@ -3,20 +3,14 @@ import time
 from config import CHROMEDRIVER
 from selenium import webdriver
 
-
 chrome = webdriver.Chrome(CHROMEDRIVER)
 chrome.get("https://yandex.ru")
 
-cookies = chrome.get_cookies()
+# cookies = chrome.get_cookies()
 
-for cookie in cookies:
-    print(cookie["name"], cookie["value"])
+saved_cookie = chrome.get_cookie("mda")
+saved_cookie["value"] = "0873247234723472984723098174092381740923874"
 
-chrome.delete_all_cookies()
-
-time.sleep(5)
-
-# Yandex restore some cookies
-cookies_after_delete = chrome.get_cookies()
+chrome.add_cookie(cookie_dict=saved_cookie)
 
 chrome.quit()

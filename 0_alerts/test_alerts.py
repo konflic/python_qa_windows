@@ -22,8 +22,7 @@ def test_basic_alert(browser):
     time.sleep(1)
     browser.find_element(By.ID, "basic").click()
     time.sleep(1)
-    WebDriverWait(browser, 2).until(EC.alert_is_present())
-    alert = browser.switch_to.alert
+    alert = WebDriverWait(browser, 2).until(EC.alert_is_present())
     alert.accept()
     time.sleep(1)
 
