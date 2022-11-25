@@ -18,8 +18,8 @@ def driver(request):
 
 
 def test_upload_radical(driver):
-    driver.get('https://radikal.ru')
-    uploader = driver.find_element(By.CSS_SELECTOR, "input.upload1")
+    driver.get('https://konflic.github.io/examples/editor/index.html')
+    uploader = driver.find_element(By.CSS_SELECTOR, "#file-uploader")
     filename = os.path.join(os.path.dirname(__file__), 'selenium.png')
     uploader.send_keys(filename)
     time.sleep(10)
