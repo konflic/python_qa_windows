@@ -1,9 +1,6 @@
-import time
-
-from config import CHROMEDRIVER
 from selenium import webdriver
 
-chrome = webdriver.Chrome(CHROMEDRIVER)
+chrome = webdriver.Chrome()
 chrome.get("https://yandex.ru")
 
 # cookies = chrome.get_cookies()

@@ -1,12 +1,10 @@
 import time
 
 from selenium.webdriver.common.by import By
-
-from config import CHROMEDRIVER, GECKODRIVER
 from selenium import webdriver
 
 # TODO: На Chrome есть проблемы с загрузкой примера
-chrome = webdriver.Firefox(executable_path=GECKODRIVER)
+chrome = webdriver.Firefox()
 chrome.maximize_window()
 chrome.get("https://konflic.github.io/examples/pages/iframes.html")
 

@@ -3,14 +3,12 @@ import pytest
 import time
 
 from selenium.webdriver.common.by import By
-
-from config import CHROMEDRIVER
 from selenium import webdriver
 
 
 @pytest.fixture
 def driver(request):
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER)
+    driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     def fin(): driver.quit()
     request.addfinalizer(fin)

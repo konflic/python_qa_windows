@@ -5,13 +5,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-from config import CHROMEDRIVER, GECKODRIVER
 import selenium.webdriver.support.expected_conditions as EC
 
 
 @pytest.fixture
 def browser():
-    wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
+    wd = webdriver.Chrome()
     # wd = webdriver.Firefox(executable_path=GECKODRIVER)
     wd.get("https://konflic.github.io/examples/pages/alerts.html")
     yield wd

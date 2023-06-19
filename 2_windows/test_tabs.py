@@ -2,7 +2,6 @@ import pytest
 import time
 
 from selenium import webdriver
-from config import CHROMEDRIVER
 from selenium.webdriver.support.ui import WebDriverWait
 
 
@@ -24,7 +23,7 @@ def there_is_window_other_than(windows):
 
 @pytest.fixture
 def browser():
-    wd = webdriver.Chrome(executable_path=CHROMEDRIVER)
+    wd = webdriver.Chrome()
     wd.get("https://konflic.github.io/examples/")
     yield wd
     wd.quit()
