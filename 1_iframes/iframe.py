@@ -2,9 +2,11 @@ import time
 
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 # TODO: На Chrome есть проблемы с загрузкой примера
-chrome = webdriver.Firefox()
+service = Service()
+chrome = webdriver.Chrome(service=service)
 chrome.maximize_window()
 chrome.get("https://konflic.github.io/examples/pages/iframes.html")
 
