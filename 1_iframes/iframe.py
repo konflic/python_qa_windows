@@ -15,17 +15,20 @@ frames = chrome.find_elements(By.CSS_SELECTOR, "iframe")
 
 # Переключаемся в первый iframe в списке
 chrome.switch_to.frame(frames[0])
-chrome.find_element(By.NAME, "search").send_keys("MacBook")
+chrome.find_element(By.CSS_SELECTOR, "#search > input").send_keys("MacBook")
+time.sleep(2)
 chrome.find_element(By.XPATH, "//*[@id='search']//button[@type='button']").click()
+
 # Возвращаемся в исходный контекст
 chrome.switch_to.default_content()
-chrome.find_element(By.ID, "main").click()
+chrome.find_element(By.CSS_SELECTOR, "#main").click()
 chrome.switch_to.alert.accept()
 time.sleep(2)
 
 # Переключаемся в iframe по имени
 chrome.switch_to.frame("selenium")
 chrome.find_element(By.CSS_SELECTOR, "button.navbar-toggler").click()
+time.sleep(2)
 # Возвращаемся в исходный контекст
 chrome.switch_to.default_content()
 chrome.find_element(By.ID, "main").click()
@@ -36,6 +39,7 @@ time.sleep(2)
 chrome.switch_to.frame(2)
 chrome.find_element(By.ID, "state").send_keys("SomeTextForInput")
 chrome.find_element(By.CSS_SELECTOR, "#submit").click()
+time.sleep(2)
 # Возвращаемся в исходный контекст
 chrome.switch_to.default_content()
 chrome.find_element(By.ID, "main").click()

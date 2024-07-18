@@ -24,6 +24,7 @@ def test_basic_alert(browser):
     browser.find_element(By.ID, "basic").click()
     time.sleep(1)
     alert = WebDriverWait(browser, 2).until(EC.alert_is_present())
+    print(alert.text)
     alert.accept()
     time.sleep(1)
 
@@ -44,7 +45,7 @@ def test_confirm_alert(browser):
     browser.find_element(By.ID, "confirm").click()
     confirm_alert = browser.switch_to.alert
     print(confirm_alert.text)
-    confirm_alert.accept()
+    confirm_alert.dismiss()
     time.sleep(2)
 
 
