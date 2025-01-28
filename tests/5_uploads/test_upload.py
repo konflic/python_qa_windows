@@ -5,7 +5,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-from uploads_3.drag_and_drop import drag_and_drop_file
+from drag_and_drop import drag_and_drop_file
 
 
 @pytest.fixture
@@ -39,6 +39,6 @@ def test_dnd_upload(driver):
 
 def test_download(driver):
     driver.get('https://konflic.github.io/examples/editor/index.html')
-    driver.find_element(By.CSS_SELECTOR, "#editor_text").send_keys("test" * 10)
+    driver.find_element(By.CSS_SELECTOR, "#editor_text").send_keys("test_" * 10)
     driver.find_element(By.CSS_SELECTOR, "#save_file").click()
     time.sleep(3)
